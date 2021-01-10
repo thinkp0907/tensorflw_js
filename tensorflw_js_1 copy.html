@@ -20,7 +20,16 @@
             model.compile(compileParam)
             
             // 3. 데이터로 모델을 학습시킵니다.
-            var fitParam = {epochs:3000}
+            // var fitParam = {epochs:3000}
+            var fitParam = {
+                epochs: 100,
+                callbacks: {
+                    onEpochEnd:
+                     function(epoch, logs) {
+                         console.log('Epochs : ', epoch, logs, 'RMSE=>', Math.sqrt(logs.loss))
+                     }
+                }
+            }
             model.fit(원인, 결과, fitParam).then(function (result) {
              
              // 4. 모델을 이용합니다. 
