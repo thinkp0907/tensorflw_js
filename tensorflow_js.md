@@ -33,3 +33,61 @@
 >    다음주결과.print()
 >})
 >```
+
+
+### 정확도 측정
+#### Epochs
+
+- 몇번 학습 시킬 것인가를 의미하는 숫자
+> ex)  
+> ```javascript
+> var fitParam = {epochs:100}
+> ```
+- change into ->
+> ex)  
+> ```javascript
+> var fitParam = {
+>    epochs:100, 
+>    callbacks: {
+>       onEpochEnd: 
+>         function(epoch, logs) {
+>           console.log('epoch', epoch, logs, 'RMSE=>', Math.sqrt(logs.loss));
+>     }
+>   }
+>}
+>```
+
+- MSE, RMSE
+
+## 모델의 실체
+- Y = a*X+b
+- a : 가중치, weight
+- b : 편향, bias
+
+### Tensor에서 값 가져오기
+![picture 1](captured_image/20210110152225.png)
+- weights의 첫 번째 값은 `Weights`, 가중치 두 번째 값은 `Bias`, 편향
+  
+![picture 2](captured_image/20210110153319.png)  
+
+## 모델 보관 방법
+1. Node.js라는 파일을 컴퓨터에 저장
+2. web browser라면 파일을 download / upload 가능
+> ![picture 3](captured_image/20210110154629.png)  
+> ![picture 4](captured_image/20210110154656.png)  
+
+3. local storage 또는 indexeddb에 저장 가능
+    - local storage라는 브라우저에 저장공간안에 저장가능
+    - page가 리로드 되거나 또는 다른 웹페이지에서도 같은 도메인 이라면 우리가 저장한 모델을 읽어들일수 있다.
+    > ![picture 5](captured_image/20210110155406.png)  
+    > ![picture 6](captured_image/20210110155425.png)  
+    > - load on different page with same domain  
+    > ![picture 7](captured_image/20210110155523.png)  
+    > ![picture 8](captured_image/20210110155555.png)  
+
+
+
+
+
+
+
